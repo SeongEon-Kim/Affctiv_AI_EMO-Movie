@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html{
+      overflow-x: hidden;
+    }
+    body{
+      user-select: none;
+      background-color: #222222;
+      color: white;
+      margin: 0px;
+    }
+
+    h1{
+      font-family: 'Whisper', cursive;
+      padding-left: 5px;
+    }
+
+    #space{
+      background-color: transparent;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 5px solid #555555;
+    }
+
+    #coor:hover{ 
+      cursor : pointer;
+    }
+
+    #coor{
+      border-radius: 50%;
+      opacity: 0.5;
+      width: 101%;
+      height: 101%;
+      position: relative;
+      bottom: 2px;
+      right: 1px;
+      pointer-events: none;
+    }
+
+    #circle {
+      position: absolute;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ee6c4d;
+      opacity: 0.4;
+      transform: translate(-50%, -50%);
+      font-size: 0.5rem;
+      visibility: hidden;
+    }   
+
+    #pointer{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: black;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    #a{
+      transform: rotate(0deg) scale(2);
+    }
+    #b{
+      transform: rotate(-20deg) scale(2);
+      
+    }
+    #c{
+      transform: rotate(-45deg) scale(2);
+    }
+    #d{
+      transform: rotate(-68deg) scale(2);
+    }
+    #e{
+      transform: rotate(-90deg) scale(2);
+    }
+    #f{
+      transform: rotate(-115deg) scale(2);
+    }
+    #g{
+      transform: rotate(-135deg) scale(2);
+    }
+    #h{
+      transform: rotate(-160deg) scale(2);
+    }
+    #i{
+      transform: rotate(-180deg) scale(2);
+    }
+    #j{
+      transform: rotate(-200deg)scale(2);
+    }
+    #k{
+      transform: rotate(-225deg)scale(2);
+    }
+    #l{
+      transform: rotate(-250deg)scale(2);
+    }
+    #m{
+      transform: rotate(-270deg) scale(2);
+    }
+    #M{
+      transform: rotate(-270deg) translate(50px, 0px);
+    }
+    #n{
+      transform: rotate(-295deg) scale(2);
+    }
+    #N{
+      transform: rotate(-275deg) translate(50px, 0px);
+    }
+    #o{
+      transform: rotate(-315deg) scale(2);
+    }
+    #p{
+      transform: rotate(-340deg) scale(2);
+    }
+
+    .item1{
+      position: relative;
+      width: 98%;
+      height: 110%;
+      left: 5px;
+    }
+
+    #player{
+      height: 100%;
+    }
+
+    .item2{
+      display: flex; 
+      align-items: center;
+    }
+
+    .line{
+      width: calc(100% - 10px);
+      height: 1px;
+      /* color: white; */
+      position: relative;
+      top: 205px;
+      left: 5px;
+      background-color: white;
+    }
+
+    #y_line{
+      transform: rotate(90deg);
+    }
+
+    .pos_box{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #pos{
+      pointer-events: none;
+      font-family: 'Whisper', 'Segoe UI', sans-serif, cursive;
+      font-size: 16px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid rgb(120, 120, 120);
+      text-align: center;
+      width: 80px;
+      color: white;
+      margin-top: 10px;
+    }
+
+    span{
+      position: relative;
+      font-size: 30px;
+    }
+
+    #high{
+      left: 137px;
+    }
+
+    .outside_text{
+      position: relative;
+      font-size: 14px;
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    }
+
+    #negative{
+      right: 135px;
+      top: 225px;
+    }
+
+    #positive{
+      left: 270px;
+      top: 225px;
+    }
+
+    #low{
+      top: 450px;
+      left: 185px;
+    }
+
+    #high_text{
+      left: -23px;
+      top: -30px;
+    }
+
+    #negative_text{
+      top: 245px;
+      right: 355px;
+    }
+
+    #positive_text{
+      top: 245px;
+      left: 162px;
+    }
+
+    #low_text{
+      top: 470px;
+      left: 7px;  
+    }
+
+    .circle {
+      position: relative;
+      top: -424px;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 1em auto;
+      border-radius: 50%;
+      list-style: none;
+    }
+    li {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 50%;
+      transform-origin: 0% 100%;
+    }
+    .text {
+      position: absolute;
+      left: -90%;
+
+      /*이모지 크기게 맞게 수정*/
+      width: 205%;
+      
+      /*중앙에 맞지 않아서 수정*/
+      height: 130%;
+      
+      text-align: center;
+      transform: skewY(67.5deg) rotate(11.25deg);
+      padding-top: 20px;
+    }
+    .emogi{
+      left: -90%;
+    }
+
+    li:first-child {
+      transform: rotate(-11.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(2) {
+      transform: rotate(11.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(3) {
+      transform: rotate(33.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(4) {
+      transform: rotate(56.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(5) {
+      transform: rotate(78.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(6) {
+      transform: rotate(101.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(7) {
+      transform: rotate(123.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(8) {
+      transform: rotate(146.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(9) {
+      transform: rotate(168.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(10) {
+      transform: rotate(191.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(11) {
+      transform: rotate(213.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(12) {
+      transform: rotate(236.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(13) {
+      transform: rotate(258.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(14) {
+      transform: rotate(281.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(15) {
+      transform: rotate(303.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(16) {
+      transform: rotate(326.25deg) skewY(-67.5deg);
+    }
+   
+
+    @media screen and (min-width: 1024px) {
+      .container{
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto;
+        align-items: start;
+      }
+    }
+
+    @media screen and (max-width: 1023px) {
+      .container{
+        display:grid;
+        justify-items: center;
+        grid-template-columns: auto;
+        grid-column-gap: 20px;
+      }
+    }
+  </style>
+
+  </head>
+  <body>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- <h1 style="font-family: 'Whisper', cursive;">{{ title }}</h1> -->
+    <h1>Hunt (2022)</h1>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div class="container">
+      <div class="item1">
+        <div id="player"></div>
+      </div>
+      <div class="item2">
+        <div class= "BOX">
+          <form>
+          <!--  
+          <label for="cur">현재시간</label>
+            <input type="text" id="cur">-->
+            <div class="pos_box">
+              <label for="pos">현재좌표 (x, y)</label>
+              <input type="int" id="pos" name="val" readonly>
+            </div>
+          </form>
+          <br>
+          <br>
+          <br>
+            
+  
+            <div class="line"></div>
+            <div id="y_line" class="line"></div>
+            <div draggable="false" id="space" onclick="clicked(event)" onmouseout="mouseOut()" onmouseover="mouseIn()"><img draggable="false" id="coor" src="new_img.png" alt="export-removebg-preview"/>
+              <ul class="circle">
+                <li>
+                  <div class="text" ><div id="a">
+                    😆
+                  </div><div>
+                    <br><br>High</div>
+                </li>
+                <li>
+                  <div class="text"><div id="b">
+                    😁
+                  </div><div>
+                    <br><br>Excited</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="c">
+                    😄
+                  </div><div>
+                    <br><br>Happy</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="d">
+                    😃
+                  </div><div>
+                    <br><br>Pleased</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="e">
+                    😀
+                  </div><div>
+                    <br><br>Positive
+                  </div>
+                </li>
+                <li>
+                  <div class="text"><div id="f">
+                    😐
+                  </div><div>
+                    <br><br>Relaxed</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="g">
+                    😊
+                  </div><div>
+                    <br><br>Peaceful</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="h">
+                    🙂
+                  </div><div>
+                    <br><br>Calm</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="i">
+                    😟
+                  </div><div>
+                    <br><br>Low
+                  </div>
+                </li>
+                <li>
+                  <div class="text" ><div id="j">
+                    😪
+                  </div><div>
+                    <br><br>Sleepy</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="k">
+                    🥱
+                  </div><div>
+                    <br><br>Bored</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="l">
+                    😢
+                  </div><div>
+                    <br><br>Sad</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="m">
+                    😠
+                  </div><div id="M">
+                   Negative</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="n">
+                    😨
+                  </div><div id="N">
+                    Nervous</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="o">
+                    😡
+                  </div><div>
+                    <br><br>Angry</div>
+                </li>
+                <li>
+                  <div class="text" ><div id="p">
+                    🤬
+                  </div><div>
+                    <br><br>Annoying</div>
+                </li>
+                
+              </ul>
+              <div id="circle">좌표</div>
+              <div id="pointer"></div> <!--포인터-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="item">
+        <form methd="post">  
+          <label for="max_pos">최대 좌표 변수 (초기값 5)</label>
+            <input type="int" id="max_pos" value=5>
+            <br>
+            <label for="max_cur">time stamp</label>
+            <input type="int" id="max_time" value=4>
+        </form>
+      </div> -->
+    </div>
+    <!-- <div id='result'> -->
+    </div>
+
+    <script>
+      //마우스 따라가는 원
+      const circle = document.querySelector("#circle");
+
+      document.addEventListener("mousemove", (e) => {
+          const mouseX = e.pageX;
+          const mouseY = e.pageY;
+          circle.style.left = mouseX + 'px';
+          circle.style.top = mouseY + 'px';
+      });
+
+      function mouseIn(){   
+        document.getElementById('circle').style.visibility = "visible";
+      }
+      function mouseOut(){
+        document.getElementById('circle').style.visibility = "hidden";
+      }
+
+      // 클릭되면
+      var clickFlag = 0;
+      function clicked(e){
+        //range = 200/document.getElementById("max_pos").value;
+        range = 200/4;
+        x = (e.offsetX-200)/range;
+        y = (-1*(e.offsetY-200))/range;
+        document.getElementById('pos').value = x + ", " + y;
+        const mouseX = e.pageX;
+        const mouseY = e.pageY;
+        clickFlag = 1;
+        document.getElementById("pointer").style.visibility = "visible";
+        document.getElementById("pointer").style.left = mouseX + 'px';
+        document.getElementById("pointer").style.top = mouseY + 'px';
+      }
+
+
+      // 점 찍고 2초 뒤에 사라짐
+      var clickTime = 0;
+      function pointer_count(){
+        if (document.getElementById("pointer").style.visibility == "visible"){
+          clickTime++;
+          if (clickTime == 2){
+            document.getElementById("pointer").style.visibility = "hidden";
+            clickTime = 0;
+          }
+        }
+      }setInterval(pointer_count, 1000);
+
+      var token;
+      var timeStamp = [10, 30, 50, 70];
+      var white = [];
+      var green = [];
+      var yellow = [];
+
+
+      function iframeCall(){
+          // 2. This code loads the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // 3. This function creates an <iframe> (and YouTube player)
+          //    after the API code downloads.
+          var player;
+          //var url_title = document.getElementById('movie_title').value
+          var url_title = 'title'
+      }
+
+      // function onYouTubeIframeAPIReady() {
+      //   player = n ew YT.Player('player', {
+      //     width: '100%',
+      //     videoId: token,
+      //     position: 'absolute',
+      //     top: '0',
+      //     left: '0',
+      //     height: '85%',
+      //     events: {
+      //       'onReady': onPlayerReady,
+      //       'onStateChange':  count
+      //     }
+      //   });
+      // }
+
+      function onYouTubeIframeAPIReady() {
+          player = new YT.Player('player', {
+            width: '100%',
+            videoId: 'CSOb8gia_mg',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            height: '85%',
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange':  count
+            }
+          });
+      }
+
+      function onPlayerReady(event){
+        event.target.playVideo();
+      }
+
+      // 카운팅 / 관리
+      //일단 잘 모르겠어서 green : timestamp +- period(입력한 시간) 구간 / yellow : timestamp +- (입력한 시간+3) 구간으로 설정함 yellow, green 앞뒤로 각각 연구자가 입력할 수 있어야 하나..?
+      var i = 0;
+      var check = 0;
+      function count(){
+        var point = document.getElementById('pos').value;
+        var time =  parseFloat((player.playerInfo.currentTime));
+        var videoLength = parseInt(player.getDuration());
+        console.log(videoLength);
+        var sp = document.getElementById('space');
+        var line = document.getElementsByClassName('line')
+        //var period = parseFloat(document.getElementById("max_time").value);
+
+        // 임의로 정한거임 나중에 DB에서 온 값으로 수정해야함
+        var period = 4
+        //document.getElementById("cur").value = time.toFixed(2);
+        var p;
+
+        if (time != 0 && time != NaN && point != ""){
+          var p = time + ' : ' + point;
+        }
+
+        if((time < timeStamp[i] - period && time > timeStamp[i] - period- 3)
+        || (time < timeStamp[i] + period + 3 && time > timeStamp[i] + period)){
+          sp.style.borderColor = "#FFB914";
+          line[0].style.backgroundColor = "#FFB914";
+          line[1].style.backgroundColor = "#FFB914";
+          if ( p != undefined && clickFlag==1){
+            console.log('노랑')
+            yellow.push(p);
+            clickFlag = 0;
+          }
+        }
+        else if(time < timeStamp[i] + period && time >= timeStamp[i] - period){
+        sp.style.borderColor = "#4AB34A";
+        line[0].style.backgroundColor = "#4AB34A";
+        line[1].style.backgroundColor = "#4AB34A";
+        if ( p != undefined && clickFlag==1){
+            green.push(p);
+            clickFlag = 0;
+          }
+        }
+        else {
+          sp.style.borderColor = "#c8c8c8";
+          line[0].style.backgroundColor = "#c8c8c8";
+          line[1].style.backgroundColor = "#c8c8c8";
+          if ( p != undefined && clickFlag==1){
+            white.push(p);
+            clickFlag = 0;
+          }
+        }
+
+        if (time > timeStamp[i] + period + 3){
+          i++;
+        }
+        if (time.toFixed(0) == videoLength - 2){    //영상 끝나기 1초 전까지 측정합니다.
+          if (check == 0){
+            console.log(white);
+            console.log(green);
+            console.log(yellow);
+            send_point();        //영상 마지막까지 좌표 저장을 끝마치고 서버로 좌표를 보냅니다.
+            check = 1;         //서버에 중복해서 보내지 않도록 
+          }
+        }
+      }
+      setInterval(count, 500);    //좌표는 0.5초마다 저장합니다. 오차가 조금씩 생깁니다,,
+
+      const div = document.getElementById('space');
+      const result = document.getElementById('circle');
+
+      div.addEventListener('mousemove', (e) => {
+      // max_pos 관련된 건 일단 값 4로 바꿔둠 ( 밑에 조절하던 칸 없애서 발생한 문제, DB에서 받아와야함 )
+      //range = 200/document.getElementById("max_pos").value
+      if (e.target != e.currentTarget) return;
+      range = 200/4;
+        x = (e.offsetX-200)/range;
+        y = (-1*(e.offsetY-200))/range;
+      result.innerText= "x : " +  x.toFixed(2) + ", y : " + y.toFixed(2);
+      });
+
+      window.onload = function(){
+        iframeCall()
+      }
+    </script>
+  </body>
+
+</html>
