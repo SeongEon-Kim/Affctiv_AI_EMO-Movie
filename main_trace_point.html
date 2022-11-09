@@ -35,7 +35,7 @@
 
     #coor{
       border-radius: 50%;
-      opacity: 0.5;
+      opacity: 0.8;
       width: 101%;
       height: 101%;
       position: relative;
@@ -66,10 +66,207 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background-color: black;
+      background-color: white;
       visibility: hidden;
       pointer-events: none;
+      transition: all 0.5s ease-out;
     }
+    #a{
+      transform: rotate(0deg) scale(2);
+    }
+    #b{
+      transform: rotate(-20deg) scale(2); 
+    }
+    #c{
+      transform: rotate(-45deg) scale(2);
+    }
+    #d{
+      transform: rotate(-68deg) scale(2);
+    }
+    #e{
+      transform: rotate(-90deg) scale(2);
+    }
+    #f{
+      transform: rotate(-115deg) scale(2);
+    }
+    #g{
+      transform: rotate(-135deg) scale(2);
+    }
+    #h{
+      transform: rotate(-160deg) scale(2);
+    }
+    #i{
+      transform: rotate(-180deg) scale(2);
+    }
+    #j{
+      transform: rotate(-200deg)scale(2);
+    }
+    #k{
+      transform: rotate(-225deg)scale(2);
+    }
+    #l{
+      transform: rotate(-250deg)scale(2);
+    }
+    #m{
+      transform: rotate(-270deg) scale(2);
+    }
+    #n{
+      transform: rotate(-295deg) scale(2);
+    }
+    #o{
+      transform: rotate(-315deg) scale(2);
+    }
+    #p{
+      transform: rotate(-340deg) scale(2);
+    }
+
+    .item1{
+      position: relative;
+      width: 98%;
+      height: 110%;
+      left: 5px;
+    }
+
+    #player{
+      height: 100%;
+    }
+
+    .item2{
+      display: flex; 
+      align-items: center;
+    }
+
+    .line{
+      width: calc(100% - 10px);
+      height: 1px;
+      /* color: white; */
+      position: relative;
+      top: 205px;
+      left: 5px;
+      background-color: white;
+    }
+
+    #y_line{
+      transform: rotate(90deg);
+    }
+
+    .pos_box{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #pos{
+      pointer-events: none;
+      font-family: 'Whisper', 'Segoe UI', sans-serif, cursive;
+      font-size: 16px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid rgb(120, 120, 120);
+      text-align: center;
+      width: 90px;
+      color: white;
+      margin-top: 10px;
+    }
+
+    span{
+      position: relative;
+      font-size: 30px;
+    }
+
+    .circle {
+      position: relative;
+      top: -424px;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 1em auto;
+      border-radius: 50%;
+      list-style: none;
+      pointer-events: none;
+    }
+    li {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 50%;
+      transform-origin: 0% 100%;
+    }
+    .text {
+      position: absolute;
+      left: -90%;
+
+      /*이모지 크기게 맞게 수정*/
+      width: 205%;
+      
+      /*중앙에 맞지 않아서 수정*/
+      height: 130%;
+      
+      text-align: center;
+      transform: skewY(67.5deg) rotate(11.25deg);
+      padding-top: 20px;
+      pointer-events: none;
+    }
+    .emogi{
+      left: -90%;
+    }
+    .nonclick{
+      pointer-events: none;
+    }
+
+    li:first-child {
+      transform: rotate(-11.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(2) {
+      transform: rotate(11.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(3) {
+      transform: rotate(33.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(4) {
+      transform: rotate(56.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(5) {
+      transform: rotate(78.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(6) {
+      transform: rotate(101.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(7) {
+      transform: rotate(123.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(8) {
+      transform: rotate(146.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(9) {
+      transform: rotate(168.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(10) {
+      transform: rotate(191.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(11) {
+      transform: rotate(213.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(12) {
+      transform: rotate(236.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(13) {
+      transform: rotate(258.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(14) {
+      transform: rotate(281.25deg) skewY(-67.5deg);
+    }
+    li:nth-child(15) {
+      transform: rotate(303.75deg) skewY(-67.5deg);
+    }
+    li:nth-child(16) {
+      transform: rotate(326.25deg) skewY(-67.5deg);
+    }
+   
     #a{
       transform: rotate(0deg) scale(2);
     }
@@ -189,192 +386,6 @@
       transform: rotate(-270deg) translate(65px, 0px);
     }
 
-    .item1{
-      position: relative;
-      width: 98%;
-      height: 110%;
-      left: 5px;
-    }
-
-    #player{
-      height: 100%;
-    }
-
-    .item2{
-      display: flex; 
-      align-items: center;
-    }
-
-    .line{
-      width: calc(100% - 10px);
-      height: 1px;
-      /* color: white; */
-      position: relative;
-      top: 205px;
-      left: 5px;
-      background-color: white;
-    }
-
-    #y_line{
-      transform: rotate(90deg);
-    }
-
-    .pos_box{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    #pos{
-      pointer-events: none;
-      font-family: 'Whisper', 'Segoe UI', sans-serif, cursive;
-      font-size: 16px;
-      background-color: transparent;
-      border: none;
-      border-bottom: 2px solid rgb(120, 120, 120);
-      text-align: center;
-      width: 80px;
-      color: white;
-      margin-top: 10px;
-    }
-
-    span{
-      position: relative;
-      font-size: 30px;
-    }
-
-    #high{
-      left: 137px;
-    }
-
-    .outside_text{
-      position: relative;
-      font-size: 14px;
-      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-    }
-
-    #negative{
-      right: 135px;
-      top: 225px;
-    }
-
-    #positive{
-      left: 270px;
-      top: 225px;
-    }
-
-    #low{
-      top: 450px;
-      left: 185px;
-    }
-
-    #high_text{
-      left: -23px;
-      top: -30px;
-    }
-
-    #negative_text{
-      top: 245px;
-      right: 355px;
-    }
-
-    #positive_text{
-      top: 245px;
-      left: 162px;
-    }
-
-    #low_text{
-      top: 470px;
-      left: 7px;  
-    }
-
-    .circle {
-      position: relative;
-      top: -424px;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      margin: 1em auto;
-      border-radius: 50%;
-      list-style: none;
-    }
-    li {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 50%;
-      height: 50%;
-      transform-origin: 0% 100%;
-    }
-    .text {
-      position: absolute;
-      left: -90%;
-
-      /*이모지 크기게 맞게 수정*/
-      width: 205%;
-      
-      /*중앙에 맞지 않아서 수정*/
-      height: 130%;
-      
-      text-align: center;
-      transform: skewY(67.5deg) rotate(11.25deg);
-      padding-top: 20px;
-    }
-    .emogi{
-      left: -90%;
-    }
-
-    li:first-child {
-      transform: rotate(-11.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(2) {
-      transform: rotate(11.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(3) {
-      transform: rotate(33.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(4) {
-      transform: rotate(56.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(5) {
-      transform: rotate(78.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(6) {
-      transform: rotate(101.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(7) {
-      transform: rotate(123.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(8) {
-      transform: rotate(146.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(9) {
-      transform: rotate(168.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(10) {
-      transform: rotate(191.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(11) {
-      transform: rotate(213.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(12) {
-      transform: rotate(236.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(13) {
-      transform: rotate(258.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(14) {
-      transform: rotate(281.25deg) skewY(-67.5deg);
-    }
-    li:nth-child(15) {
-      transform: rotate(303.75deg) skewY(-67.5deg);
-    }
-    li:nth-child(16) {
-      transform: rotate(326.25deg) skewY(-67.5deg);
-    }
-   
 
     @media screen and (min-width: 1024px) {
       .container{
@@ -420,11 +431,7 @@
           <br>
           <br>
           <br>
-            
-  
-            <div class="line"></div>
-            <div id="y_line" class="line"></div>
-            <div draggable="false" id="space" onclick="clicked(event)" onmouseout="mouseOut()" onmouseover="mouseIn()"><img draggable="false" id="coor" src="new_img.png" alt="export-removebg-preview"/>
+            <div draggable="false" id="space" onclick="clicked(event)" onmouseout="mouseOut()" onmouseover="mouseIn()"><img draggable="false" id="coor" src="img.png" alt="export-removebg-preview"/>
               <ul class="circle">
                 <li>
                   <div class="text" ><div id="a">
@@ -524,7 +531,6 @@
                   </div><div id="P">
                     Annoying</div>
                 </li>
-                
               </ul>
               <div id="circle">좌표</div>
               <div id="pointer"></div> <!--포인터-->
@@ -557,7 +563,33 @@
           circle.style.top = mouseY + 'px';
       });
 
-      function mouseIn(){   
+      const div = document.getElementById('space');
+      const result = document.getElementById('circle');
+
+      div.addEventListener('mousemove', (e) => {
+        // max_pos 관련된 건 일단 값 4로 바꿔둠 ( 밑에 조절하던 칸 없애서 발생한 문제, DB에서 받아와야함 )
+        //range = 200/document.getElementById("max_pos").value
+        range = 200/5;
+          x = (e.offsetX-200)/range;
+          y = (-1*(e.offsetY-200))/range;
+
+          if (x > 5){
+            x = 5
+          }
+          else if (x < -5){
+            x = -5
+          }
+          else if (y > 5){
+            y = 5
+          }
+          else if (y < -5){
+            y = -5
+          }
+
+        result.innerText= "x : " +  x.toFixed(2) + ", y : " + y.toFixed(2);
+        });
+
+      function mouseIn(){  
         document.getElementById('circle').style.visibility = "visible";
       }
       function mouseOut(){
@@ -568,9 +600,23 @@
       var clickFlag = 0;
       function clicked(e){
         //range = 200/document.getElementById("max_pos").value;
-        range = 200/4;
+        range = 200/5;
         x = (e.offsetX-200)/range;
         y = (-1*(e.offsetY-200))/range;
+
+        if (x > 5){
+          x = 5
+        }
+        else if (x < -5){
+          x = -5
+        }
+        else if (y > 5){
+          y = 5
+        }
+        else if (y < -5){
+          y = -5
+        }
+
         document.getElementById('pos').value = x + ", " + y;
         const mouseX = e.pageX;
         const mouseY = e.pageY;
@@ -580,7 +626,7 @@
         document.getElementById("pointer").style.top = mouseY + 'px';
       }
 
-
+      /*
       // 점 찍고 2초 뒤에 사라짐
       var clickTime = 0;
       function pointer_count(){
@@ -592,6 +638,7 @@
           }
         }
       }setInterval(pointer_count, 1000);
+      */
 
       var token;
       var timeStamp = [10, 30, 50, 70];
@@ -714,19 +761,6 @@
         }
       }
       setInterval(count, 500);    //좌표는 0.5초마다 저장합니다. 오차가 조금씩 생깁니다,,
-
-      const div = document.getElementById('space');
-      const result = document.getElementById('circle');
-
-      div.addEventListener('mousemove', (e) => {
-      // max_pos 관련된 건 일단 값 4로 바꿔둠 ( 밑에 조절하던 칸 없애서 발생한 문제, DB에서 받아와야함 )
-      //range = 200/document.getElementById("max_pos").value
-      if (e.target != e.currentTarget) return;
-      range = 200/4;
-        x = (e.offsetX-200)/range;
-        y = (-1*(e.offsetY-200))/range;
-      result.innerText= "x : " +  x.toFixed(2) + ", y : " + y.toFixed(2);
-      });
 
       window.onload = function(){
         iframeCall()
