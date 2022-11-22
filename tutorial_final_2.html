@@ -69,7 +69,6 @@
       background-color: white;
       visibility: hidden;
       pointer-events: none;
-      transition: all 0.3s ease-out;
     }
     #a{
       transform: rotate(0deg) scale(2);
@@ -137,6 +136,7 @@
     }
 
     .line{
+      display: none;
       width: calc(100% - 10px);
       height: 1px;
       /* color: white; */
@@ -411,7 +411,7 @@
     #tutorial{
       text-align: right;
       position: absolute;
-      left: 45%;
+      left: 40%;
       top: 35px;
       z-index: 1000;
       background-color: white;
@@ -421,7 +421,12 @@
       font-family: sans-serif;
     }
 
-    #tutorial_btn{
+    #tutorial_btn_box{
+      display: flex;
+      justify-content:flex-end;
+    }
+
+    .tutorial_btn{
       font-family: sans-serif;
       background-color: #cb11ff57;
       border: none;
@@ -430,11 +435,15 @@
       padding: 3px 6px;
     }
 
-    #tutorial_btn:hover{
+    .pre_btn{
+      display: none;
+    }
+
+    .tutorial_btn:hover{
       opacity: 0.8;
     }
 
-    #tutorial_btn:active{
+    .tutorial_btn:active{
       opacity: 0.4;
     }
 
@@ -470,8 +479,11 @@
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 
     <div id="tutorial">
-      <div id="tutorial_text">튜토리얼이에요~ 확인을 누르면 다음으로 넘어갑니다!</div>
-      <button id="tutorial_btn" onclick="tutorialClickEvent()">확인</button>
+      <div id="tutorial_text">튜토리얼을 시작합니다😊</div>
+      <div id="tutorial_btn_box">
+        <button class="tutorial_btn pre_btn" onclick="tutorialClickEvent(event)">이전</button>
+        <button class="tutorial_btn" onclick="tutorialClickEvent(event)">다음</button>
+      </div>
     </div>
     <div class="container">
       <div class="item1">
@@ -491,33 +503,37 @@
           <br>
           <br>
           <br>
-            <div draggable="false" id="space" onclick="clicked(event)" onmouseout="mouseOut()" onmouseover="mouseIn()"><img draggable="false" id="coor" src="img.png" alt="export-removebg-preview"/>
+            <div class="line"></div>
+            <div id="y_line" class="line"></div>
+            <div draggable="false" id="space" onclick="clicked(event)" onmouseout="mouseOut()" onmouseover="mouseIn()"><img draggable="false" id="coor" src="new_img.png" alt="export-removebg-preview"/>
               <ul class="circle">
                 <li>
                   <div class="text_HLPN" ><div id="a">
                     😆
                   </div><div id="A">
                     High</div>
-                  
+                    </div>
                 </li>
                 <li>
                   <div class="text"><div id="b">
                     😁
                   </div><div id="B">
                     Excited</div>
-                  
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="c">
                     😄
                   </div><div id="C">
                     Happy</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="d">
                     😃
                   </div><div id="D">
                     Pleased</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text_HLPN" ><div id="e">
@@ -525,24 +541,28 @@
                   </div><div id="E">
                     Positive
                   </div>
+                </div>
                 </li>
                 <li>
                   <div class="text"><div id="f">
                     😐
                   </div><div id="F">
                     Relaxed</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="g">
                     😊
                   </div><div id="G">
                     Peaceful</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="h">
                     🙂
                   </div><div id="H">
                     Calm</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text_HLPN" ><div id="i">
@@ -550,48 +570,56 @@
                   </div><div id="I">
                     Low
                   </div>
+                </div>
                 </li>
                 <li>
                   <div class="text" ><div id="j">
                     😪
                   </div><div id="J">
                     Sleepy</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="k">
                     🥱
                   </div><div id="K">
                     Bored</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="l">
                     😢
                   </div><div id="L">
                     Sad</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text_HLPN" ><div id="m">
                     😠
                   </div><div id="M">
                    Negative</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="n">
                     😨
                   </div><div id="N">
                     Nervous</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="o">
                     😡
                   </div><div div id="O">
                     Angry</div>
+                  </div>
                 </li>
                 <li>
                   <div class="text" ><div id="p">
                     🤬
                   </div><div id="P">
                     Annoying</div>
+                  </div>
                 </li>
               </ul>
               <div id="circle">좌표</div>
@@ -616,11 +644,36 @@
 
     <script>
         let tutorial_check = ''
-        const tutorialClickEvent = () => {
+        let tutorial_check_num = 0
+
+        const tutorialClickEvent = (e) => {
             const tuto_text = document.getElementById('tutorial_text')
+            const tuto_btn = document.getElementsByClassName('tutorial_btn')
+            const tuto_btn_box = document.getElementById('tutorial_btn_box')
             const sp = document.getElementById('space')
 
+            const line = document.getElementsByClassName('line')
+
+            const tutorial_process = [
+              '', 'X축 Y축 완료', '감정설명시작', '1사분면 완료', '2사분면 완료', '3사분면 완료', '4사분면 완료', '회색 설명 완료', '노란색 설명 완료', '초록색 설명 완료'
+            ]
+
+            if (e.target == tuto_btn[0]){
+              tutorial_check_num!=0 ? tutorial_check_num-- : tutorial_check_num = 0
+            }
+            else if (e.target == tuto_btn[1]){
+              tutorial_check_num!=tutorial_check.length ? tutorial_check_num++ : tutorial_check_num=0 
+            }
+
+            console.log(tutorial_check_num)
+            console.log(e.target)
+
+            tutorial_check = tutorial_process[tutorial_check_num]
+
             if (tutorial_check == ''){
+              tuto_btn[0].style.display = 'none'
+              tuto_btn_box.style.justifyContent = 'flex-end'
+              
               tuto_text.innerHTML = 'X축과 Y축 설명을 시작하겠습니다.' + '<br>'
               +'X축(Valence)은 경험에 대한 감정의 부정/긍정정도를 나타냅니다.' + '<br>'
               +'Y축(Arousal)은 감정의 능동성/수동성 세기를 나타냅니다.'
@@ -634,12 +687,21 @@
 			        }
               document.getElementById("coor").src = "tutorial_img.png";
 
+              line[0].style.display = 'block'
+              line[1].style.display = 'block'
+
               tutorial_check = 'X축 Y축 완료'
             } 
 
             else if (tutorial_check == 'X축 Y축 완료'){
+                tuto_btn[0].style.display = 'block'
+                tuto_btn_box.style.justifyContent = 'space-between'
+
                 tuto_text.innerHTML = '좌표에 있는 감정 설명을 시작하겠습니다.' + '<br>'
                 +'(이때, 감정의 뜻이 아닌 감정이 주는 느낌에 집중해주세요.)'
+
+                line[0].style.display = 'none'
+                line[1].style.display = 'none'
 
                 var text = document.getElementsByClassName("text");
 
@@ -653,44 +715,54 @@
                 tutorial_check = '감정설명시작'
             }           
             else if (tutorial_check == '감정설명시작'){
-                tuto_text.innerHTML = 'Excited는 굉장히 들뜨고 기대되는 상태,' + '<br>'
-                + '\n Happy는 행복한 상태,'+ '<br>' + '\n Pleased는 기쁜 상태입니다.'
+                tuto_text.innerHTML = 'Excited는 굉장히 들뜨고 기대되는 상태,'
+                + ' Happy는 행복한 상태,'+ '<br>' + 'Pleased는 기쁜 상태입니다.'
             
                 tutorial_check = '1사분면 완료'
 
-                var Excited = document.getElementById("B");
-                Excited.style.display = "none";
-                var Excited = document.getElementById("C");
-                Excited.style.display = "none";
-                var Excited = document.getElementById("D");
-                Excited.style.display = "none";
-
+                var text = document.getElementsByClassName("text");
+                for( var i = 0; i < 3; i++ ){
+                  var text_value = text.item(i);
+                  text_value.style.display = "none";
+                }
             }    
             else if (tutorial_check == '1사분면 완료'){
-                tuto_text.innerHTML = 'Relaxed는 긴장이 풀리고 진정한 상태,' + '<br>'
-                + 'Peaceful은 마음이 평화로운 상태,'+ '<br>' + 'Calm은 침착하고 잔잔한 상태입니다.'
+                tuto_text.innerHTML = 'Relaxed는 긴장이 풀리고 진정한 상태,'
+                + ' Peaceful은 마음이 평화로운 상태,'+ '<br>' + 'Calm은 침착하고 잔잔한 상태입니다.'
             
                 tutorial_check = '2사분면 완료'
+
+                var text = document.getElementsByClassName("text");
+                for( var i = 3; i < 6; i++ ){
+                  var text_value = text.item(i);
+                  text_value.style.display = "none";
+                }
             }
             else if (tutorial_check == '2사분면 완료'){
-                tuto_text.innerHTML = 'Sleepy는  졸음이 오는 상태,' + '<br>'
-                + 'Bored는 지루한 상태,'+ '<br>' + 'Sad는 슬픈 상태입니다.'
+                tuto_text.innerHTML = 'Sleepy는  졸음이 오는 상태,'
+                + ' Bored는 지루한 상태,'+ ' Sad는 슬픈 상태입니다.'
             
                 tutorial_check = '3사분면 완료'
+
+                var text = document.getElementsByClassName("text");
+                for( var i = 6; i < 9; i++ ){
+                  var text_value = text.item(i);
+                  text_value.style.display = "none";
+                }
             }
             else if (tutorial_check == '3사분면 완료'){
-                tuto_text.innerHTML = 'Nervous는 긴장한 상태,' + '<br>'
-                + 'Angry는 화가 나는 상태,'+ '<br>' + 'Annoying 짜증나는 상태입니다.'
+                tuto_text.innerHTML = 'Nervous는 긴장한 상태,'
+                + ' Angry는 화가 나는 상태,'+ '<br> Annoying 짜증나는 상태입니다.'
             
                 tutorial_check = '4사분면 완료'
+
+                var text = document.getElementsByClassName("text");
+                for( var i = 9; i < 12; i++ ){
+                  var text_value = text.item(i);
+                  text_value.style.display = "none";
+                }
             }
             else if (tutorial_check == '4사분면 완료'){
-                tuto_text.innerHTML = '각 사분면끼리 감정은 비슷해 보일 수 있지만,.' + '<br>'
-                + '시계방향으로 갈수록 더 깊은 감정입니다.'
-            
-                tutorial_check = '감정 설명 완료'
-            }
-            else if (tutorial_check == '감정 설명 완료'){
                 tuto_text.innerHTML = '그래프의 테두리가 회색인 경우는 대기 상태입니다.'
                 
                 tutorial_check = '회색 설명 완료'
@@ -698,12 +770,14 @@
             else if (tutorial_check == '회색 설명 완료'){
                 sp.style.borderColor = "#FFB914";
 
-                tuto_text.innerHTML = '그래프의 테두리가 노란색인 경우, 준비 상태입니다.'
+                tuto_text.innerHTML = '그래프의 테두리가 노란색인 경우, 준비 상태입니다. <br> 노란색이 나타나고 5초 뒤에 초록색으로 변합니다.'
                 
                 tutorial_check = '노란색 설명 완료'
             }
             else if (tutorial_check == '노란색 설명 완료'){
                 sp.style.borderColor = "#4AB34A";
+
+                tuto_btn[1].innerHTML = '다음'
 
                 tuto_text.innerHTML = '그래프의 테두리가 초록색인 지금, 좌표를 찍습니다.'
                 
@@ -711,6 +785,8 @@
             }
             else if (tutorial_check == '초록색 설명 완료'){
                 tuto_text.innerHTML = '실험이 종료된 후에는 상단의 버튼을 눌러 이전 페이지로 돌아갑니다.'
+
+                tuto_btn[1].innerHTML = '확인'
                 
                 tutorial_check = '설명 종료'
             }
